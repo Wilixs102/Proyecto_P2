@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Proyecto_P1.Models.Zapatos>
+
+@{
+    ViewData["Title"] = "Catalogo";
+}
+
+<style>
+    
+
+    .image-catalog{
+        margin-top: 10px;
+        width: 500px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+    .description{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 80px;
+        border-top: 2px solid #eeeeee;
+    }
+    .description h2{
+        width: 500px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+    .description img{
+        width: 500px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+    .description p{
+            font-size: 15px;
+            color: #585858;
+            margin: 10px 0;
+    }
+    .description-model{
+        margin-top: 10px;
+        font-size: 30px;
+        color: #333333;
+        align-items: flex-end;
+    }
+</style>
+
+<h1>Catalogo</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo Zapato</a>
+</p>
+
+@foreach(var item in Model){
+    <div class="description">
+        <div class="description-model">
+            <h2>@item.Marca - @item.Modelo</h2>
+            <p>En stock: @item.Cantidad     Precio: @item.Precio</p>
+            <p>Fecha de publicacion: @item.Fecha</p>
+            <a asp-action="Delete" asp-route-id="@item.IdZapatos">Comprar</a>
+        </div>                    
+        <div class="image-catalog">
+            <img src="@item.ImagenVisual" style="width: 400px; height=400px; margin-top: 15px">
+        </div>
+    </div>    
+}
